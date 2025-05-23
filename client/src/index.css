@@ -1,0 +1,425 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%; /* #0f172a - cosmic-900 */
+  --foreground: 0 0% 98%; /* #fafafa */
+  --muted: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --muted-foreground: 240 5% 64.9%; /* #64748b - cosmic-500 */
+  --popover: 240 10% 3.9%; /* #0f172a - cosmic-900 */
+  --popover-foreground: 0 0% 98%;
+  --card: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --input: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --primary: 258 90% 66%; /* #a855f7 - mystical-500 */
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84.2% 60.2%; /* #ef4444 */
+  --destructive-foreground: 0 0% 98%;
+  --ring: 258 90% 66%; /* #a855f7 - mystical-500 */
+  --radius: 0.5rem;
+  
+  /* Cosmic theme colors */
+  --cosmic-50: 210 40% 98%;
+  --cosmic-100: 210 40% 96%;
+  --cosmic-200: 214 32% 91%;
+  --cosmic-300: 213 27% 84%;
+  --cosmic-400: 215 20% 65%;
+  --cosmic-500: 215 16% 47%;
+  --cosmic-600: 215 19% 35%;
+  --cosmic-700: 215 25% 27%;
+  --cosmic-800: 217 33% 17%;
+  --cosmic-900: 222 84% 5%;
+  
+  /* Mystical theme colors */
+  --mystical-50: 270 100% 98%;
+  --mystical-100: 269 100% 95%;
+  --mystical-200: 269 100% 92%;
+  --mystical-300: 268 100% 86%;
+  --mystical-400: 270 95% 75%;
+  --mystical-500: 271 91% 65%;
+  --mystical-600: 271 81% 56%;
+  --mystical-700: 272 72% 47%;
+  --mystical-800: 273 67% 39%;
+  --mystical-900: 274 66% 32%;
+  
+  /* Gold theme colors */
+  --gold-50: 48 100% 96%;
+  --gold-100: 48 96% 89%;
+  --gold-200: 48 97% 77%;
+  --gold-300: 46 97% 65%;
+  --gold-400: 43 96% 56%;
+  --gold-500: 38 92% 50%;
+  --gold-600: 32 95% 44%;
+  --gold-700: 26 90% 37%;
+  --gold-800: 23 83% 31%;
+  --gold-900: 22 78% 26%;
+  
+  /* Chart colors */
+  --chart-1: 258 90% 66%; /* mystical-500 */
+  --chart-2: 38 92% 50%; /* gold-500 */
+  --chart-3: 271 91% 65%; /* mystical-500 */
+  --chart-4: 43 96% 56%; /* gold-400 */
+  --chart-5: 272 72% 47%; /* mystical-700 */
+  
+  /* Sidebar colors */
+  --sidebar-background: 240 10% 3.9%; /* cosmic-900 */
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 258 90% 66%; /* mystical-500 */
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 3.7% 15.9%; /* cosmic-700 */
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 3.7% 15.9%; /* cosmic-700 */
+  --sidebar-ring: 258 90% 66%; /* mystical-500 */
+}
+
+.dark {
+  --background: 240 10% 3.9%; /* #0f172a - cosmic-900 */
+  --foreground: 0 0% 98%; /* #fafafa */
+  --muted: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --muted-foreground: 240 5% 64.9%; /* #64748b - cosmic-500 */
+  --popover: 240 10% 3.9%; /* #0f172a - cosmic-900 */
+  --popover-foreground: 0 0% 98%;
+  --card: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --input: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --primary: 258 90% 66%; /* #a855f7 - mystical-500 */
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%; /* #334155 - cosmic-700 */
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%; /* #dc2626 */
+  --destructive-foreground: 0 0% 98%;
+  --ring: 258 90% 66%; /* #a855f7 - mystical-500 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /* Cosmic gradient backgrounds */
+  .bg-cosmic-gradient {
+    background: linear-gradient(135deg, hsl(var(--cosmic-900)) 0%, hsl(var(--cosmic-800)) 50%, hsl(var(--mystical-900)) 100%);
+  }
+  
+  .bg-mystical-gradient {
+    background: linear-gradient(135deg, hsl(var(--mystical-900)) 0%, hsl(var(--mystical-700)) 50%, hsl(var(--mystical-500)) 100%);
+  }
+  
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-500)) 0%, hsl(var(--gold-600)) 100%);
+  }
+  
+  /* Text gradients */
+  .text-cosmic-gradient {
+    background: linear-gradient(135deg, hsl(var(--cosmic-300)) 0%, hsl(var(--cosmic-500)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-mystical-gradient {
+    background: linear-gradient(135deg, hsl(var(--mystical-300)) 0%, hsl(var(--mystical-500)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-300)) 0%, hsl(var(--gold-500)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Custom scrollbar */
+  .scrollbar-cosmic::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollbar-cosmic::-webkit-scrollbar-track {
+    background: hsl(var(--cosmic-800));
+    border-radius: 4px;
+  }
+  
+  .scrollbar-cosmic::-webkit-scrollbar-thumb {
+    background: hsl(var(--mystical-600));
+    border-radius: 4px;
+  }
+  
+  .scrollbar-cosmic::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--mystical-500));
+  }
+  
+  /* Animation utilities */
+  @keyframes cosmic-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  .animate-cosmic-pulse {
+    animation: cosmic-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Backdrop blur utilities */
+  .backdrop-blur-cosmic {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+  
+  /* Cosmic card styling */
+  .cosmic-card {
+    @apply bg-cosmic-700/60 backdrop-blur-sm border border-mystical-800/30 rounded-xl;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+  
+  .cosmic-card-hover {
+    @apply cosmic-card hover:border-mystical-600/50 transition-all duration-300;
+  }
+  
+  /* Button enhancements */
+  .btn-cosmic-primary {
+    @apply bg-mystical-gradient hover:shadow-lg hover:shadow-mystical-500/50 text-white font-semibold transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .btn-cosmic-secondary {
+    @apply bg-gold-gradient hover:shadow-lg hover:shadow-gold-500/30 text-white font-semibold transition-all duration-300;
+  }
+  
+  /* Form enhancements */
+  .input-cosmic {
+    @apply bg-cosmic-800 border-cosmic-600 text-white placeholder-cosmic-400 focus:border-mystical-500 focus:outline-none focus:ring-2 focus:ring-mystical-500/20 transition-all;
+  }
+  
+  /* Loading states */
+  .loading-cosmic {
+    @apply animate-spin text-mystical-400;
+  }
+  
+  /* Text shadows for better readability */
+  .text-shadow-cosmic {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Glass morphism effect */
+  .glass-cosmic {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+  }
+  
+  /* Gradient borders */
+  .border-cosmic-gradient {
+    border: 1px solid;
+    border-image: linear-gradient(135deg, hsl(var(--mystical-500)) 0%, hsl(var(--gold-500)) 100%) 1;
+  }
+}
+
+/* Custom component styles */
+.cosmic-navigation {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.cosmic-hero {
+  background: linear-gradient(135deg, 
+    hsl(var(--cosmic-900)) 0%, 
+    hsl(var(--cosmic-800)) 25%, 
+    hsl(var(--mystical-900)) 75%, 
+    hsl(var(--cosmic-900)) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmic-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 25% 25%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Chart visualization styles */
+.chart-container {
+  background: radial-gradient(circle at center, 
+    rgba(168, 85, 247, 0.1) 0%, 
+    rgba(15, 23, 42, 0.9) 70%);
+}
+
+/* Prediction card styles */
+.prediction-card {
+  background: linear-gradient(135deg, 
+    rgba(51, 65, 85, 0.6) 0%, 
+    rgba(30, 41, 59, 0.8) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  transition: all 0.3s ease;
+}
+
+.prediction-card:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04),
+              0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+/* Compatibility analysis styles */
+.compatibility-score {
+  background: conic-gradient(
+    from 0deg,
+    hsl(var(--mystical-500)) 0deg,
+    hsl(var(--gold-500)) 120deg,
+    hsl(var(--mystical-700)) 240deg,
+    hsl(var(--mystical-500)) 360deg
+  );
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.compatibility-score-inner {
+  background: hsl(var(--cosmic-900));
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Premium features styling */
+.premium-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(168, 85, 247, 0.1) 0%, 
+    rgba(245, 158, 11, 0.1) 100%);
+  pointer-events: none;
+}
+
+.premium-popular {
+  background: linear-gradient(135deg, 
+    hsl(var(--mystical-900)) 0%, 
+    hsl(var(--mystical-700)) 50%, 
+    hsl(var(--mystical-500)) 100%);
+  border: 2px solid hsl(var(--mystical-400));
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
+}
+
+/* Responsive design enhancements */
+@media (max-width: 640px) {
+  .cosmic-hero {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .cosmic-card {
+    margin: 0.5rem;
+    border-radius: 0.75rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .cosmic-navigation,
+  .cosmic-hero,
+  .premium-card {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .cosmic-card {
+    border: 1px solid #ccc !important;
+    background: white !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --cosmic-800: 0 0% 10%;
+    --cosmic-700: 0 0% 20%;
+    --mystical-500: 258 100% 70%;
+    --gold-500: 38 100% 60%;
+  }
+  
+  .cosmic-card {
+    border-color: hsl(var(--mystical-500)) !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cosmic-pulse,
+  .animate-float,
+  .loading-cosmic {
+    animation: none;
+  }
+  
+  .cosmic-card-hover,
+  .prediction-card {
+    transition: none;
+  }
+  
+  .btn-cosmic-primary,
+  .btn-cosmic-secondary {
+    transform: none !important;
+  }
+}
